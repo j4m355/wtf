@@ -1,6 +1,7 @@
 template = require 'views/templates/carousel'
 View = require 'views/base/view'
 mediator = require 'mediator'
+QuickQuoteView = require './quickQuote-view'
 
 
 module.exports = class CarouselView extends View
@@ -13,32 +14,19 @@ module.exports = class CarouselView extends View
     @delegate 'keyup', '#postcodeBox', @postcodeSearch
 
   render:()=>
-    @$el.hide()
     super
     @closeLoginErrorAlert()
     @$('.carousel').carousel()
-    @$el.fadeIn()
     #@$el.show('slide', {direction : 'right'}, 1000)
 
   postcodeSearch:(e)=>
     if e.keyCode is 13
-      @closeLoginErrorAlert()
       postcode = $('#postcodeBox').val()
-      valid = validate(postcode)
-      if valid
-        $.ajax
-          url: "/api/postcode",
-          type: "post",
-          data: $('#postcodeBox').serialize()
-          statusCode:
-            422: ()->
-              showErrorAlert("Postcode not in service area.")
-            502: ()->
-              showErrorAlert("<strong>Whoops - Something has gone wrong</strong> Please try again.")
-          success: (jqXhr, textStatus)->
-            console.log jqXhr
-          error: ()->
-            console.log "error"
+      if validate(postcode)
+        @$el.fadeOut()
+        new QuickQuoteView()
+        mediator.publish "quickQuoteView", postcode
+        @dispose
 
 
   validate = (postcode)=>
