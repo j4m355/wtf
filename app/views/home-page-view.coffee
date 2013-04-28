@@ -1,7 +1,6 @@
 template = require 'views/templates/home'
 View = require 'views/base/view'
 mediator = require 'mediator'
-Spinner = components 'spin.js'
 CarouselView = require './carousel-view'
 
 
@@ -20,5 +19,3 @@ module.exports = class HomePageView extends View
     new CarouselView(
       container: @$("#topRow"))
     @$el.fadeIn()
-
-    #@$el.show('slide', {direction : 'right'}, 1000)

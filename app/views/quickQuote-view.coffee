@@ -26,7 +26,9 @@ module.exports = class QuickQuoteView extends View
       data: {postcode : item},
       statusCode:
         422: ()->
-          showErrorAlert("Postcode not in service area.")
+          outOfBounds(item)
+        200: ()->
+          inBounds(item)
         502: ()->
           showErrorAlert("<strong>Whoops - Something has gone wrong</strong> Please try again.")
       success: (jqXhr, textStatus)->
@@ -35,15 +37,12 @@ module.exports = class QuickQuoteView extends View
         console.log "error"
 
 
-  validate = (postcode)=>
-    errors = []
-    if postcode.length < 1 || !validatePostcode(postcode)
-      errors.push "Please use a valid postcode"
-    if errors.length >0
-      showErrorAlert(errors)
-      return false
-    else
-      return true
+
+  outOfBounds = (postcode)=>
+    console.log "out of bounds " + postcode
+
+  inBounds = (postcode)=>
+    console.log "in bounds " +  postcode
 
   closeLoginErrorAlert:()=>
     @$('#validPostcode').hide()
@@ -51,13 +50,4 @@ module.exports = class QuickQuoteView extends View
   showErrorAlert = (message)=>
     $('#postcodeResult').html(message)
     $('#validPostcode').show()
-
-  validatePostcode = (postcode)=>
-    console.log postcode
-    postcodeRegEx = /^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z])))) {0,1}[0-9][A-Za-z]{2})$/
-    belfastPostcode = /^([Bb][Tt])/
-    if belfastPostcode.test(postcode)
-      return postcodeRegEx.test(postcode)
-    else
-      return false
       
