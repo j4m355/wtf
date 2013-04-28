@@ -24,8 +24,8 @@ module.exports = class HomePageView extends View
 
   postcodeSearch:(e)=>
     if e.keyCode is 13
-      valid = validate($('#postcodeBox').val())
-      console.log valid
+      postcode = $('#postcodeBox').val()
+      valid = validate(postcode)
       if valid
         $.ajax
           url: "/api/postcode",
@@ -37,10 +37,9 @@ module.exports = class HomePageView extends View
             console.log "error"
 
 
-  validate = ()=>
+  validate = (postcode)=>
     errors = []
-    postcode = $('#postcodeBox').val()
-    if postcode.length < 1 || !validatePostcode()
+    if postcode.length < 1 || !validatePostcode(postcode)
       errors.push "Please use a valid postcode"
     if errors.length >0
       showErrorAlert(errors)
@@ -63,19 +62,11 @@ module.exports = class HomePageView extends View
     $('#loginErrorAlert').show()
 
   validatePostcode = (postcode)=>
-    re = /^(?!bt)/
-    re2 = /^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {0,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR ?0AA)$/
-    bttest = re.test(postcode)
-    postcodetest = re2.test(postcode)
-    console.log "bttest" + bttest
-    console.log "postcodetest" + postcodetest
-    if bttest
-      return postcodetest
+    console.log postcode
+    postcodeRegEx = /^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z])))) {0,1}[0-9][A-Za-z]{2})$/
+    belfastPostcode = /^([Bb][Tt])/
+    if belfastPostcode.test(postcode)
+      return postcodeRegEx.test(postcode)
     else
       return false
-
-  validatePhone = (number)=>
-    re = /\d{11}/
-    return re.test(number)
-
       
