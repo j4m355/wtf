@@ -18,12 +18,14 @@ module.exports = class HomePageView extends View
   render:()=>
     @$el.hide()
     super
+    @closeLoginErrorAlert()
     @$('.carousel').carousel()
     @$el.fadeIn()
     #@$el.show('slide', {direction : 'right'}, 1000)
 
   postcodeSearch:(e)=>
     if e.keyCode is 13
+      @closeLoginErrorAlert()
       postcode = $('#postcodeBox').val()
       valid = validate(postcode)
       if valid
@@ -31,6 +33,11 @@ module.exports = class HomePageView extends View
           url: "/api/postcode",
           type: "post",
           data: $('#postcodeBox').serialize()
+          statusCode:
+            409: ()->
+              showErrorAlert("Postcode not in service area.")
+            502: ()->
+              showErrorAlert("<strong>Whoops - Something has gone wrong</strong> Please try again.")
           success: (jqXhr, textStatus)->
             console.log jqXhr
           error: ()->
@@ -47,19 +54,12 @@ module.exports = class HomePageView extends View
     else
       return true
 
-  closeLoginSuccsesAlert:()=>
-    @$('#loginSuccsesAlert').hide()
-
   closeLoginErrorAlert:()=>
-    @$('#loginErrorAlert').hide()
-
-  showSuccessAlert = (message)=>
-    $('#successMessage').html(message)
-    $('#loginSuccsesAlert').show()
+    @$('#validPostcode').hide()
 
   showErrorAlert = (message)=>
-    $('#errorMessage').html(message)
-    $('#loginErrorAlert').show()
+    $('#postcodeResult').html(message)
+    $('#validPostcode').show()
 
   validatePostcode = (postcode)=>
     console.log postcode
