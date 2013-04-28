@@ -34,7 +34,7 @@ module.exports = class HomePageView extends View
           type: "post",
           data: $('#postcodeBox').serialize()
           statusCode:
-            409: ()->
+            422: ()->
               showErrorAlert("Postcode not in service area.")
             502: ()->
               showErrorAlert("<strong>Whoops - Something has gone wrong</strong> Please try again.")
