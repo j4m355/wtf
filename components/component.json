@@ -1,0 +1,19 @@
+{
+  "name": "components",
+  "repo": "j4m355/components",
+  "description": "components",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/calendar" : "*",
+    "component/spin" : "*"
+    },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ],
+  "styles": [
+    "components.css"
+  ]
+}

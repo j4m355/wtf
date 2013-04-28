@@ -1,0 +1,8 @@
+node_modules/
+npm-debug.log
+workspace/
+simpleWebServer/
+_settings.json
+_Rakefile.rb
+public/
+~.git/
