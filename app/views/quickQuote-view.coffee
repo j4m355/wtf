@@ -1,6 +1,9 @@
 template = require 'views/templates/quickQuote'
 View = require 'views/base/view'
 mediator = require 'mediator'
+Spinner = components 'spin.js'
+
+denzel = new Spinner({color:'#e5e5e5', lines: 13, className: 'spinner', length: 20, width:10,radius:30,corners:1.0,rotate:0,trail:60,speed:1.0,direction:1,shadow:off}).spin()
 
 
 module.exports = class QuickQuoteView extends View
@@ -12,10 +15,11 @@ module.exports = class QuickQuoteView extends View
     super
     mediator.subscribe "quickQuoteView", @postcodeSearch
 
+
   render:()=>
-    @$el.hide()
+    @$el.hide() 
     super
-    @$el.fadeIn()
+    @$('#spinner').html(denzel.el)
 
   postcodeSearch:(item)=>
     console.log item    
@@ -33,8 +37,11 @@ module.exports = class QuickQuoteView extends View
           showErrorAlert("<strong>Whoops - Something has gone wrong</strong> Please try again.")
       success: (jqXhr, textStatus)->
         console.log jqXhr
+        denzel.stop() 
       error: ()->
         console.log "error"
+
+
 
 
 
