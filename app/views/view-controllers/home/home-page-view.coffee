@@ -1,4 +1,4 @@
-template = require 'views/templates/home'
+template = require 'views/templates/home/home'
 View = require 'views/base/view'
 mediator = require 'mediator'
 CarouselView = require './carousel-view'

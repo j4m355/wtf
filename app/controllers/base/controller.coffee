@@ -1,7 +1,7 @@
 Chaplin = require 'chaplin'
 SiteView = require 'views/site-view'
-HeaderView = require 'views/header-view'
-FooterView = require 'views/footer-view'
+HeaderView = require 'views/view-controllers/page/header-view'
+FooterView = require 'views/view-controllers/page/footer-view'
 
 module.exports = class Controller extends Chaplin.Controller
   beforeAction:

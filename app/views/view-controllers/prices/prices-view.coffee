@@ -1,4 +1,4 @@
-template = require 'views/templates/prices'
+template = require 'views/templates/prices/prices'
 View = require 'views/base/view'
 
 module.exports = class PricesView extends View

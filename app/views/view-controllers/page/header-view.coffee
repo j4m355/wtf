@@ -1,5 +1,5 @@
 View = require 'views/base/view'
-template = require 'views/templates/header'
+template = require 'views/templates/page/header'
 
 module.exports = class HeaderView extends View
   autoRender: yes

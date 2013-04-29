@@ -1,4 +1,4 @@
-template = require 'views/templates/contact'
+template = require 'views/templates/contact/contact'
 View = require 'views/base/view'
 mediator = require 'mediator'
 

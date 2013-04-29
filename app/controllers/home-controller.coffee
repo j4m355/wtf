@@ -1,8 +1,8 @@
 Controller = require 'controllers/base/controller'
-HomePageView = require 'views/home-page-view'
-AppointmentsView = require 'views/appointments-view'
-PricesView = require 'views/prices-view'
-ContactView = require 'views/contact-view'
+HomePageView = require 'views/view-controllers/home/home-page-view'
+AppointmentsView = require 'views/view-controllers/appointment/appointments-view'
+PricesView = require 'views/view-controllers/prices/prices-view'
+ContactView = require 'views/view-controllers/contact/contact-view'
 QuoteView = require 'views/quote-view'
 
 

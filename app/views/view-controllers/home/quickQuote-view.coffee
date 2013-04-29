@@ -1,4 +1,4 @@
-template = require 'views/templates/quickQuote'
+template = require 'views/templates/home/quickQuote'
 View = require 'views/base/view'
 mediator = require 'mediator'
 Spinner = components 'spin.js'

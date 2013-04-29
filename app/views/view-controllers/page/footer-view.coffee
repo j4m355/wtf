@@ -1,5 +1,5 @@
 View = require 'views/base/view'
-template = require 'views/templates/footer'
+template = require 'views/templates/page/footer'
 
 module.exports = class FooterView extends View
   autoRender: yes

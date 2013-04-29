@@ -1,4 +1,4 @@
-template = require 'views/templates/carousel'
+template = require 'views/templates/home/carousel'
 View = require 'views/base/view'
 mediator = require 'mediator'
 QuickQuoteView = require './quickQuote-view'

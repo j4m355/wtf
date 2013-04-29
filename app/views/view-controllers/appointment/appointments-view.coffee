@@ -1,4 +1,4 @@
-template = require 'views/templates/appointments'
+template = require 'views/templates/appointment/appointments'
 View = require 'views/base/view'
 
 Calendar = components('calendar')
