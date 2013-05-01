@@ -31,10 +31,10 @@ module.exports = class QuickQuoteView extends View
       statusCode:
         422: ()->
           outOfBounds(item)
-          $('#manOnBike').html("<H1> Out of bloody bounds </h1>")
+          @$('#manOnBike').html("<H1> Out of bloody bounds </h1>")
         200: ()->
           inBounds(item)
-          $('#manOnBike').html("<H1> In bloody bounds </h1>")
+          @$('#manOnBike').html("<H1> In bloody bounds </h1>")
         502: ()->
           showErrorAlert("<strong>Whoops - Something has gone wrong</strong> Please try again.")
       success: (jqXhr, textStatus)->
