@@ -31,10 +31,8 @@ module.exports = class QuickQuoteView extends View
       statusCode:
         422: ()->
           outOfBounds(item)
-          $('#manOnBike').html("<H1> Out of bloody bounds </h1>")
         200: ()->
           inBounds(item)
-          $('#manOnBike').html("<H1> In bloody bounds </h1>")
         502: ()->
           showErrorAlert("<strong>Whoops - Something has gone wrong</strong> Please try again.")
       success: (jqXhr, textStatus)->
@@ -49,10 +47,12 @@ module.exports = class QuickQuoteView extends View
 
 
   outOfBounds = (postcode)=>
-    console.log "out of bounds " + postcode
+    console.log "out of bounds " + postcode    
+    $('#manOnBike').html("<H1> Out of bloody bounds </h1>")
 
   inBounds = (postcode)=>
-    console.log "in bounds " +  postcode
+    console.log "in bounds " +  postcode    
+    $('#manOnBike').html("<H1> In bloody bounds </h1>")
 
   closeLoginErrorAlert:()=>
     @$('#validPostcode').hide()
