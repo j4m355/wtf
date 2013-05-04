@@ -13,9 +13,6 @@ module.exports = class HomePageView extends View
   initialize:()=>
     super
 
-  subViewController:()=>
-    console.log "I control which subview is showing"
-
   render:()=>
     @$el.hide()
     super
