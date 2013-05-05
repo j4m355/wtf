@@ -2,8 +2,7 @@ template = require 'views/templates/home/quickQuote'
 View = require 'views/base/view'
 mediator = require 'mediator'
 Spinner = components 'spin.js'
-InboundView = require 'views/view-controllers/home/inbound-view'
-OutboundView = require 'views/view-controllers/home/outbound-view'
+
 
 denzel = new Spinner({color:'#e5e5e5', lines: 13, className: 'spinner', length: 20, width:10,radius:30,corners:1.0,rotate:0,trail:60,speed:1.0,direction:1,shadow:off}).spin()
 
@@ -14,7 +13,7 @@ module.exports = class QuickQuoteView extends View
 
   initialize: ()=>
     super
-    mediator.subscribe "quickQuoteView", @postcodeSearch
+    mediator.subscribe "quickQuoteViewLoad", @postcodeSearch
 
 
   render:()=>
@@ -40,22 +39,25 @@ module.exports = class QuickQuoteView extends View
         console.log jqXhr
       error: (jqXhr, textStatus, errorThrown)->
         console.log errorThrown
-      complete: ()->        
-        denzel.stop() 
-
-
-
-
+      ###complete: ()->        
+        denzel.stop()###
 
   outOfBounds = (postcode)=>
-    new OutboundView(container: @$("#topRow"))
+    denzel.stop() 
+    mediator.publish 'closeQuickQuoteView', postcode
+    #@mediator.publish 'servicesViewLoad', postcode
+    #outboundView = new OutboundView(autoRender: true, container: @$('#topRow'))
+    #@subview 'outboundView', outboundView
     console.log "out of bounds " + postcode
-    @dispose
+    #@dispose
 
   inBounds = (postcode)=>
-    new InboundView(container: @$("#topRow"))
+    denzel.stop()     
+    mediator.publish 'closeQuickQuoteView', postcode
+    #inboundView = new InboundView(autoRender: true, container: @$('#topRow'))
+    #@subview 'inboundView', inboundView
     console.log "in bounds " +  postcode
-    @dispose
+    #@dispose
 
   closeLoginErrorAlert:()=>
     @$('#validPostcode').hide()

@@ -3,7 +3,6 @@ View = require 'views/base/view'
 mediator = require 'mediator'
 QuickQuoteView = require './quickQuote-view'
 
-
 module.exports = class CarouselView extends View
   autoRender: yes
   container: '#topRow'
@@ -24,9 +23,11 @@ module.exports = class CarouselView extends View
       postcode = $('#postcodeBox').val()
       if validate(postcode)
         @$el.fadeOut()
-        new QuickQuoteView()
-        mediator.publish "quickQuoteView", postcode
-        @dispose
+        mediator.publish "closeCarouselView", postcode
+        #quickQuoteView = new QuickQuoteView(autoRender: true)
+        #@subview 'quickQuoteView', quickQuoteView
+        #mediator.publish "quickQuoteViewLoad", postcode
+        #@dispose
 
 
   validate = (postcode)=>

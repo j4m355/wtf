@@ -11,13 +11,13 @@ module.exports = class HomeController extends Controller
     @view = new HomePageView region: 'main'
       
   appointments: =>
-      @view = new AppointmentsView()
+    @view = new AppointmentsView()
 
   prices: =>
-      @view = new PricesView()
+    @view = new PricesView()
 
   contact: =>
-      @view = new ContactView()
+    @view = new ContactView()
 
   quote: =>
-      @view = new QuoteView()
+    @view = new QuoteView()
