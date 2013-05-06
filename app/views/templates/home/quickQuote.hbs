@@ -5,8 +5,10 @@
 		
 	
 		<ul class="steps">
-			<li>Step 1</li>
-			<li>Step 2</li>
+			<li>Services</li>
+			<li>Problem</li>
+			<li>Quote</li>
+			<li>Appointment</li>
 		</ul>
 
 		
@@ -14,11 +16,28 @@
 		<div class="step_content">
 			
 			<!-- Wizard - Step 1 -->
-			<div id="step-1" class="step one_column">
+			<div id="step-1" class="step two_column">
 				
+				<div id="help-whatisthis" class="helper">
+		    <div class="text">
+		    	<h3>Helper Title</h3>
+		    	<p>Helper Description!</p>
+		    </div>
+		</div>
 				<div class="column_one">
-					dfs
+					<p>The following services are available in <strong>{{postcode}}</strong>:</p><br>
+						<strong>Bring to Us </strong><br>
+						{{#if inbounds}}
+						<strong>Collect and return</strong><br>
+						{{/if}}
+
+						
 				</div>
+
+				<div class="column_two">
+					<p>When me and the guys were at church last week we noticed that there was a car on the website</p>
+				</div>
+
 				
 			</div>
 
@@ -26,11 +45,11 @@
 			<div id="step-1" class="step two_column">
 				
 				<div class="column_one">
-				dsfds
+				<p>Its funny - sometimes people show faces to other people</p>
 				</div>
 				
 				<div class="column_two">
-			sdfds
+					<p>When me and the guys were at church last week we noticed that there was a car on the website</p>
 				</div>
 				
 			</div>
