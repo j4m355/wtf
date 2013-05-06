@@ -4,7 +4,6 @@ mediator = require 'mediator'
 
 CarouselView = require './carousel-view'
 QuickQuoteView = require 'views/view-controllers/home/quickQuote-view'
-ServicesView = require 'views/view-controllers/home/services-view'
 
 
 module.exports = class HomePageView extends View
@@ -27,7 +26,9 @@ module.exports = class HomePageView extends View
 
   closeCarouselView:(postcode)=>
     @removeSubview(@carouselView)
-    quickQuoteView = new QuickQuoteView(autoRender: true, container: @$("#topRow"))
+    console.log "hester"
+    quickQuoteView = new QuickQuoteView(autoRender: true, container: @$("#topRow"))  
+    console.log "gonzales"
     @subview 'quickQuoteView', quickQuoteView
     mediator.publish "quickQuoteViewLoad", postcode    
 

@@ -13,11 +13,15 @@ exports.config =
         before: [
           'vendor/scripts/console-polyfill.js',
           'vendor/scripts/jquery-1.9.1.js',
+          'vendor/scripts/jquery.browser.js',
           'vendor/scripts/underscore-1.4.4.js',
-          'vendor/scripts/backbone-1.0.0.js'
+          'vendor/scripts/backbone-1.0.0.js',
+          'vendor/scripts/validate.js',
+          'vendor/scripts/hoverIntent.js',
+          'vendor/scripts/wizardPro.js'
         ]
         after: [
-          'test/vendor/scripts/test-helper.js'
+          'test/vendor/scripts/test-helper.js'          
         ]
 
     stylesheets:

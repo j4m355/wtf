@@ -16,7 +16,6 @@ module.exports = class CarouselView extends View
     super
     @closeLoginErrorAlert()
     @$('.carousel').carousel()
-    #@$el.show('slide', {direction : 'right'}, 1000)
 
   postcodeSearch:(e)=>
     if e.keyCode is 13
