@@ -16,27 +16,49 @@
 		<div class="step_content">
 			
 			<!-- Wizard - Step 1 -->
-			<div id="step-1" class="step two_column">
+			<div id="step-1" class="step two_column row">
 				
-				<div id="help-whatisthis" class="helper">
-		    <div class="text">
-		    	<h3>Helper Title</h3>
-		    	<p>Helper Description!</p>
-		    </div>
-		</div>
-				<div class="column_one">
+<div class="container">
+
+<div class="row">
+
+       <div class="span9">
+           <div class="row">
+         <div class="span6 pull-right">{{#if inbounds}}
+						<div id="choices">
+							What would you rather do? <br>
+							<a class="btn btn-large btn-block btn-primary">Bring Computer To Us</a>
+							<a class="btn btn-large btn-block btn-primary">Have Us Collect and Return Computer</a>
+						</div>
+					{{/if}}
+
+					{{#unless inbounds}}
+						<a class="btn">Tell us about your problem</a>
+					{{/unless}}
+				</div>
+
+          <div class="span3"><div class="alert full-height">
 					<p>The following services are available in <strong>{{postcode}}</strong>:</p><br>
-						<strong>Bring to Us </strong><br>
-						{{#if inbounds}}
+					<ul>
+						<li><strong>Bring to Us </strong></li>
+						{{#if inbounds}}<li>
 						<strong>Collect and return</strong><br>
-						{{/if}}
-
-						
+						</li>{{/if}}
+					</ul>
+					</div>
 				</div>
+           </div><!-- end nested row -->
+    </div><!-- end span9 -->
 
-				<div class="column_two">
-					<p>When me and the guys were at church last week we noticed that there was a car on the website</p>
-				</div>
+        <div class="span3">Total: £0</div>
+
+    </div><!-- end parent row-->
+
+ </div><!-- end container -->  
+
+
+
+			
 
 				
 			</div>
