@@ -24,7 +24,7 @@ module.exports = class HomePageView extends View
     super
     carouselView = new CarouselView(autoRender : true, container: @$("#topRow"))
     @subview 'carouselView', carouselView
-    @$el.fadeIn()
+    #@$el.fadeIn()
 
   closeCarouselView:(postcode)=>
     @removeSubview(@carouselView)
