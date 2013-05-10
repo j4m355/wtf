@@ -16,8 +16,8 @@ module.exports = class HomePageView extends View
 
   initialize:()=>
     super
-    mediator.subscribe "closeCarouselView", @closeCarouselView
-    mediator.subscribe "closeQuickQuoteView", @closeQuickQuoteView
+    @subscribeEvent "closeCarouselView", @closeCarouselView
+    @subscribeEvent "closeQuickQuoteView", @closeQuickQuoteView
 
   render:()=>
     @$el.hide()
